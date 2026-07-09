@@ -8,11 +8,16 @@
 ![Dashboard Preview](output/chart3_hero_repeat_ltv.png)
 
 ## Key Findings
-- Discount-acquired customers generate **$100 vs $340** in 90-day LTV — a 70% gap
-- OLS regression confirms **-$165 causal impact** on LTV after controlling for category and seasonality (p=0.0000, n=94,727)
-- **100% of 'Lost' RFM customers** were discount-acquired — zero full-price customers ended up Lost
-- Full-price customers are **3x more likely** to become Champions in RFM segmentation
-- Finding is **robust** — holds under two independent discount definitions
+- Discount-acquired customers generate **$74 vs $289** in 90-day revenue — a 74% gap (person-level, n=92,098 customers)
+- OLS regression: discount acquisition is associated with **–160 BRL** in 90-day revenue after controlling for category, seasonality, and freight (p<0.001, n=91,159)
+- Finding is **robust** — holds under a strict discount definition (bottom 25th percentile of category price: –92 BRL, p<0.001)
+- Repeat purchasing is structurally rare at Olist (**~3% of customers**, nearly identical across acquisition types) — so discounting doesn't cause churn; it **attracts low-spend, one-time customers** in the first place
+- Observational data with a price-based discount proxy — read effects as *associations*, not causal estimates; a pricing A/B test is the right next step
+
+## Data Correction (Jul 2026)
+An earlier version keyed customer analysis on `customer_id`, which in Olist is unique **per order** — the person-level key is `customer_unique_id`. After correcting the join key:
+- The core LTV finding **strengthened** (gap widened from 70% to 74%; regression coefficient essentially unchanged at –160 BRL)
+- The RFM/churn claims were **retracted**: apparent "repeat purchases" were multi-item orders, and true repeat rates are ~3% for both acquisition groups
 
 ## Tools & Methods
 SQL · Python (Pandas, Statsmodels, Seaborn) · Tableau
@@ -38,4 +43,4 @@ Olist Brazilian E-Commerce — [Kaggle](https://www.kaggle.com/datasets/olistbr/
 Do promotional discounts drive long-term customer value at Olist — or do they attract one-time buyers and erode margins?
 
 ## Recommendation
-Olist's discounting strategy generates transaction volume without generating customer value. Electronics and food_drink are priority targets for promotional restructuring based on high discount rates and below-average 90-day LTV.
+Olist's discounting strategy generates transaction volume without generating customer value. Electronics and food_drink are priority targets for promotional restructuring based on high discount rates (75–76%) and the lowest 90-day customer revenue of any major category ($74–85 vs $141 average).

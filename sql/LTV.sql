@@ -1,14 +1,14 @@
--- 90-day LTV per customer
+-- 90-day LTV per person (customer_unique_id, not per-order customer_id)
 CREATE TABLE customer_ltv AS
-SELECT 
-    f.customer_id,
+SELECT
+    f.customer_unique_id,
     f.acquired_via_discount,
     f.first_order_date,
     ROUND(SUM(m.price), 2) AS ltv_90d
 FROM customer_first_order f
-JOIN master_orders m ON f.customer_id = m.customer_id
+JOIN master_orders m ON f.customer_unique_id = m.customer_unique_id
 WHERE m.order_date <= DATE(f.first_order_date, '+90 days')
-GROUP BY f.customer_id, f.acquired_via_discount, f.first_order_date;
+GROUP BY f.customer_unique_id, f.acquired_via_discount, f.first_order_date;
 
 -- Compare 90-day LTV by acquisition type
 SELECT

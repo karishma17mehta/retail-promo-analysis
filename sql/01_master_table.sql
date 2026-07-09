@@ -4,6 +4,9 @@ CREATE TABLE master_orders AS
 SELECT
     o.order_id,
     o.customer_id,
+    -- customer_id is unique PER ORDER in Olist; customer_unique_id identifies the person.
+    -- All person-level analysis (repeat rate, LTV, RFM) must key on customer_unique_id.
+    c.customer_unique_id,
     o.order_purchase_timestamp AS order_date,
     o.order_status,
     c.customer_city,
