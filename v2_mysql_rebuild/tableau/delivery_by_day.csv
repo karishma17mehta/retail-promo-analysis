@@ -1,0 +1,62 @@
+days_late,orders,avg_review_score,status
+-30,375,4.275,On time or early
+-29,488,4.256,On time or early
+-28,747,4.299,On time or early
+-27,808,4.226,On time or early
+-26,792,4.275,On time or early
+-25,908,4.266,On time or early
+-24,1062,4.311,On time or early
+-23,1252,4.27,On time or early
+-22,1837,4.341,On time or early
+-21,2803,4.312,On time or early
+-20,2949,4.369,On time or early
+-19,2693,4.357,On time or early
+-18,3116,4.331,On time or early
+-17,3398,4.338,On time or early
+-16,3888,4.333,On time or early
+-15,5318,4.349,On time or early
+-14,7090,4.329,On time or early
+-13,5926,4.338,On time or early
+-12,4526,4.311,On time or early
+-11,4592,4.303,On time or early
+-10,4618,4.333,On time or early
+-9,4606,4.293,On time or early
+-8,4800,4.257,On time or early
+-7,4815,4.256,On time or early
+-6,3603,4.247,On time or early
+-5,2208,4.196,On time or early
+-4,1903,4.147,On time or early
+-3,1715,4.12,On time or early
+-2,1540,4.125,On time or early
+-1,1450,4.158,On time or early
+0,1280,4.036,On time or early
+1,820,3.732,Late
+2,536,3.179,Late
+3,496,2.683,Late
+4,436,2.498,Late
+5,434,2.192,Late
+6,407,1.811,Late
+7,471,1.917,Late
+8,330,1.709,Late
+9,219,1.667,Late
+10,207,1.582,Late
+11,177,1.726,Late
+12,155,1.665,Late
+13,189,1.735,Late
+14,169,1.592,Late
+15,155,1.71,Late
+16,94,1.676,Late
+17,89,1.674,Late
+18,73,1.726,Late
+19,74,1.514,Late
+20,86,1.645,Late
+21,76,1.671,Late
+22,64,1.719,Late
+23,34,1.471,Late
+24,52,1.538,Late
+25,39,1.603,Late
+26,33,1.364,Late
+27,40,1.525,Late
+28,46,1.609,Late
+29,37,1.324,Late
+30,14,1.286,Late
