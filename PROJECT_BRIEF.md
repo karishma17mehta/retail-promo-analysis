@@ -68,7 +68,7 @@ The first version of this analysis grouped by `customer_id`, which makes repeat-
 
 **After re-keying on `customer_unique_id`:**
 - The revenue finding **strengthened** (gap widened from 70% to 74%)
-- The regression coefficient barely moved (−165 → −160), confirming the core result was sound
+- The regression coefficient barely moved (−165 → −159), confirming the core result was sound
 - The RFM/churn claims were **retracted** — true repeat rate is ~3% for both groups
 
 **Transferable lesson:** the grain of your key must match the grain of your claim. A person-level claim requires a person-level key.
@@ -79,9 +79,11 @@ The first version of this analysis grouped by `customer_id`, which makes repeat-
 
 **Specification:** OLS of 90-day customer revenue on the acquisition flag, controlling for first-order category, first-order month (seasonality), freight value; top 1% of revenue trimmed.
 
-**Result:** −160 BRL, p < 0.001, n ≈ 91,000.
+**Result:** −159.28 BRL, 95% CI [−160.73, −157.83], p < 0.001, n = 91,184, R² = 0.468.
 
-**Why run it at all — this is the point most people miss.** The raw comparison ($74 vs $289) invites an obvious objection: *"discount-acquired customers might simply be buying in cheaper categories."* If so, the gap says nothing about discounting. Controls answer exactly that objection: the coefficient is the difference in revenue between the two groups *within the same category, same month, similar freight.* Controls are named confounders you're ruling out.
+Note the R²: most of the explained variance comes from the category controls, not the discount flag. The coefficient is a difference, not a model of what drives customer value.
+
+**Why run it at all — this is the point most people miss.** The raw comparison ($73 vs $287) invites an obvious objection: *"discount-acquired customers might simply be buying in cheaper categories."* If so, the gap says nothing about discounting. Controls answer exactly that objection: the coefficient is the difference in revenue between the two groups *within the same category, same month, similar freight.* Controls are named confounders you're ruling out.
 
 **Why it is not causal.** Customers were not randomly assigned to discounts — they self-selected. Any unobserved trait (budget-consciousness, product need) could drive both. Controls handle confounders you can name and measure; they cannot handle the ones you can't. A causal answer requires a randomised pricing test.
 
@@ -91,7 +93,7 @@ The first version of this analysis grouped by `customer_id`, which makes repeat-
 
 Re-ran the regression with a stricter definition — bottom 25th percentile of category price rather than below-mean.
 
-**Result:** −92 BRL, p < 0.001. Direction and significance hold; magnitude shrinks.
+**Result:** −92.12 BRL, p < 0.001. Direction and significance hold; magnitude shrinks.
 
 **Why it matters:** the discount flag was invented, not observed. If the finding only existed under one arbitrary threshold, it would be an artifact of that choice. Surviving an independent definition is evidence the signal is real.
 
@@ -99,8 +101,8 @@ Re-ran the regression with a stricter definition — bottom 25th percentile of c
 
 ## 8. Findings
 
-1. **Discount-acquired customers generate R$74 vs R$289** in 90-day revenue — a 74% gap (n = 92,098).
-2. **Regression confirms −160 BRL** after controls (p < 0.001), robust under a stricter definition (−92 BRL).
+1. **Discount-acquired customers generate R$73 vs R$287** in 90-day revenue — a 74% gap (n = 92,098).
+2. **Regression confirms −159 BRL** after controls (p < 0.001, n = 91,184), robust under a stricter definition (−92 BRL).
 3. **Repeat purchasing is ~3% and essentially identical** across groups (2.6% full-price, 3.1% discount-acquired). Discounting does not differentially drive churn — this marketplace has a structural retention problem affecting everyone.
 4. **The differentiator is spend level, not loyalty.** The opportunity is in acquisition quality, not retention.
 5. **Worst categories:** electronics (75.3% discount rate, R$72 revenue), food (63.5%, R$76), food_drink (75.8%, R$83) — against a R$141 average. By customer volume the biggest prizes are health_beauty (8,498 customers), telephony (4,047) and electronics (2,507).
@@ -111,7 +113,7 @@ Re-ran the regression with a stricter definition — bottom 25th percentile of c
 ## 9. Known limitations — state these before you're asked
 
 - **The proxy measures cheapness, not markdown.** A product-level markdown definition flags 9.3% of items vs 68.9%, agreeing only 35% of the time.
-- **The outcome window is dominated by the first order.** 98% of "90-day revenue" *is* the first purchase — and the group is assigned by that same purchase's price. The comparison is therefore substantially mechanical. Isolating post-first-order spend gives a much smaller ratio (~1.6x, not yet significance-tested).
+- **The outcome window is dominated by the first order.** 98.3% of "90-day revenue" *is* the first purchase — and the group is assigned by that same purchase's price, so the headline comparison is substantially mechanical. Isolating **post-first-order** spend removes the circularity: R$3.33 vs R$2.01 per customer, a 1.66x gap (Welch t-test p < 0.0001). Notably the two components move in opposite directions — discount-acquired customers are *more* likely to return (1.88% vs 1.55%, χ² p = 0.0004) but spend far less when they do (~R$107 vs ~R$215 per returner). Discounting buys smaller baskets, not lower loyalty.
 - **Observational data.** Associations only.
 - **Retention cannot be studied here.** ~97% of customers buy once; cohort curves are uninformative.
 
