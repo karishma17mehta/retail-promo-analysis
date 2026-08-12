@@ -35,20 +35,27 @@ Olist Brazilian E-Commerce — [Kaggle](https://www.kaggle.com/datasets/olistbr/
 
 ## Structure
 
-The SQL is split into two versions. **Run the second one.**
+The project exists in two versions. **Run v2.**
 
 | Folder | What it is |
 |---|---|
-| [`/sql/01_original_sqlite`](sql/01_original_sqlite) | the original SQLite pass — kept for history, carries known join defects |
-| [`/sql/02_mysql_rebuild`](sql/02_mysql_rebuild) | **current.** Rebuilt in MySQL from raw CSVs, verified stage by stage |
-| `/notebooks` | EDA, regression, RFM (built on v1; correction banners at top) |
-| `/tableau` | flat exports feeding the dashboard |
-| `/output` | charts and dashboard screenshots |
-| `/clean` | processed CSVs |
+| [**`v1_original_analysis/`**](v1_original_analysis) | the first pass — SQLite pipeline, Python notebooks, charts. Kept for history; carries known defects, documented in its README |
+| [**`v2_mysql_rebuild/`**](v2_mysql_rebuild) | **current.** Rebuilt in MySQL from the raw CSVs, verified stage by stage, plus Tableau exports |
+| `data/` | raw Kaggle CSVs (shared input) |
 | [`PROJECT_BRIEF.md`](PROJECT_BRIEF.md) | 2-page write-up: objective, method, findings, limitations |
 
-Each SQL folder has its own README explaining what's inside and, for the
-rebuild, the expected row count at every stage.
+Each version folder has its own README. v1's lists what it got wrong; v2's
+lists the expected row count at every stage so the build can be verified
+rather than trusted.
+
+## Why there are two versions
+
+v1 was published, then audited. Two rounds of defects surfaced — a person-level
+key that made repeat detection impossible, and three join errors that inflated
+revenue and silently dropped rows. v2 rebuilds the whole pipeline in a
+different database engine, reconciling every stage against an independent
+implementation. The revenue finding survived and strengthened; the retention
+claims did not and were retracted.
 
 ## Business Question
 Do promotional discounts drive long-term customer value at Olist — or do they attract one-time buyers and erode margins?
