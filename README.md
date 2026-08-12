@@ -3,15 +3,14 @@
 > Do promotional discounts drive long-term customer value — or train customers to wait for sales?
 
 ## 📊 Live Dashboard
-[View on Tableau Public](https://public.tableau.com/app/profile/karishma.mehta8733/viz/RetailPromotionEffectivenessOlistAnalysis/Dashboard1)
-
-![Dashboard Preview](output/chart3_hero_repeat_ltv.png)
+[View on Tableau Public](https://public.tableau.com/app/profile/karishma.mehta8733/viz/RetailPromotionEffectivenessOlistAnalysis/Dashboard1) — two tabs: promotion effectiveness, and delivery performance.
 
 ## Key Findings
-- Discount-acquired customers generate **$74 vs $289** in 90-day revenue — a 74% gap (person-level, n=92,098 customers)
-- OLS regression: discount acquisition is associated with **–160 BRL** in 90-day revenue after controlling for category, seasonality, and freight (p<0.001, n=91,159)
+- Discount-acquired customers generate **$73 vs $287** in 90-day revenue — a 74% gap (person-level, n=92,098 customers)
+- OLS regression: discount acquisition is associated with **–160 BRL** in 90-day revenue after controlling for category, seasonality, and freight (p<0.001, n≈91,000)
 - Finding is **robust** — holds under a strict discount definition (bottom 25th percentile of category price: –92 BRL, p<0.001)
 - Repeat purchasing is structurally rare at Olist (**~3% of customers**, nearly identical across acquisition types) — so discounting doesn't cause churn; it **attracts low-spend, one-time customers** in the first place
+- **Delivery timing matters ~100× more than price to satisfaction.** Review scores span 2.6 stars from early to very late delivery, against 0.02 stars between discounted and full-price orders. Each day past the promised date costs 0.37 stars — but only for six days, after which the score has bottomed out
 - Observational data with a price-based discount proxy — read effects as *associations*, not causal estimates; a pricing A/B test is the right next step
 
 ## Data Correction (Jul 2026)

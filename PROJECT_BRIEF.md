@@ -103,7 +103,8 @@ Re-ran the regression with a stricter definition — bottom 25th percentile of c
 2. **Regression confirms −160 BRL** after controls (p < 0.001), robust under a stricter definition (−92 BRL).
 3. **Repeat purchasing is ~3% and essentially identical** across groups (2.6% full-price, 3.1% discount-acquired). Discounting does not differentially drive churn — this marketplace has a structural retention problem affecting everyone.
 4. **The differentiator is spend level, not loyalty.** The opportunity is in acquisition quality, not retention.
-5. **Worst categories:** electronics (75.3% discount rate, R$74 revenue), food (63.5%, R$76), food_drink (76.0%, R$85) — against a R$141 average.
+5. **Worst categories:** electronics (75.3% discount rate, R$72 revenue), food (63.5%, R$76), food_drink (75.8%, R$83) — against a R$141 average. By customer volume the biggest prizes are health_beauty (8,498 customers), telephony (4,047) and electronics (2,507).
+6. **Delivery timing outweighs price for satisfaction by roughly 100×.** Review scores span 2.6 stars across delivery timing (4.31 early → 1.73 very late) versus 0.02 stars between discounted and full-price orders. The relationship has three regimes: flat at 4.28 for anything early, a steep decline of **0.373 stars per day** through day six (R² = 0.98), then flat at 1.61. Early delivery buys nothing extra; past a week the customer has written the order off. Rio de Janeiro is the clearest operational target — 13.5% late against São Paulo's 5.9%, in the second-largest market.
 
 ---
 
@@ -118,11 +119,15 @@ Re-ran the regression with a stricter definition — bottom 25th percentile of c
 
 ## 10. Tableau dashboard
 
-Four views: hero comparison (revenue by acquisition type), category scatter (discount rate vs 90-day revenue, sized by customers), category scorecard table, and a robustness panel showing both discount definitions side by side.
+Two tabs, [published on Tableau Public](https://public.tableau.com/app/profile/karishma.mehta8733/viz/RetailPromotionEffectivenessOlistAnalysis/Dashboard1).
 
-**Design intent:** the scatter is the decision tool — it puts every category on two axes a merchant cares about, so priority targets (high discount exposure, low customer value) fall visibly into one quadrant rather than needing to be argued for.
+**Tab 1 — Promotion effectiveness.** Hero comparison ($73 vs $287 by acquisition type), category scorecard with a Reduce / Monitor / Maintain recommendation per category, and 90-day customer revenue against promotional depth.
 
-*Note: the published dashboard predates the person-level correction and still shows the earlier figures.*
+The recommendation rule is explicit: *Reduce Promo Depth* flags categories in the top quartile of discount rate (>75% of items below their category average price) that also fall below the median 90-day customer revenue of $153 — high promotional cost, low customer return.
+
+**Tab 2 — Delivery performance.** Review score by delivery timing, and a day-level scatter isolating the six-day window where satisfaction actually moves.
+
+**Design intent:** every chart title states a finding rather than describing the chart — "Discount Buyers Generate 74% Less Revenue in 90 Days", "Every Day Late Costs a Third of a Star". A reader who only reads titles still leaves with the argument.
 
 ---
 
