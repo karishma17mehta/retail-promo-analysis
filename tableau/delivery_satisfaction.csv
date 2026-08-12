@@ -1,0 +1,6 @@
+delivery_bucket,orders,avg_review_score
+"1. Early 5d+",81555,4.31
+"2. On time",7888,4.12
+"3. Late 1-5d",2722,2.99
+"4. Late 6-15d",2479,1.74
+"5. Late 15d+",1180,1.73
